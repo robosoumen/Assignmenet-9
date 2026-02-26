@@ -4,7 +4,8 @@ import MainLayout from "../layout/MainLayout";
 import Homepage from "../pages/Homepage";
 import ProfilePage from "../pages/ProfilePage";
 import ResisterPage from "../pages/ResisterPage";
-import Loginpage from "../pages/Loginpage";
+import AuthLayout from "../layout/AuthLayout";
+import LoginPage from "../pages/LoginPage";
 
 const router = createBrowserRouter([
     {
@@ -13,7 +14,8 @@ const router = createBrowserRouter([
         children:[
             {
                 path: '',
-                element: <Homepage></Homepage>
+                element: <Homepage></Homepage>,
+                loader: () => fetch('/public/toy.json')
             },
             {
                 path: '/profile',
@@ -22,12 +24,18 @@ const router = createBrowserRouter([
         ]
     },
     {
-        path: "/resister",
-        element: <ResisterPage></ResisterPage>
-    },
-    {
-        path: "/login",
-        element: <Loginpage></Loginpage>
+        path: '/auth',
+        element: <AuthLayout></AuthLayout>,
+        children: [
+            {
+                path: '/auth/login',
+                element: <LoginPage></LoginPage>
+            },
+            {
+                path: '/auth/resister',
+                element: <ResisterPage></ResisterPage>
+            },
+        ]
     },
     {
         path: "/*",
