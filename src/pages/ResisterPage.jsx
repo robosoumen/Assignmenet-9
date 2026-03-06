@@ -1,7 +1,9 @@
-import React from "react";
+import React, { use } from "react";
 import { Link } from "react-router";
+import { AuthContext } from "../provider/AuthProvider";
 
 const ResisterPage = () => {
+  const { createUser, setUser } = use(AuthContext);
 const handleResister = (e) => {
     e.preventDefault();
     console.log(e.target);
@@ -10,7 +12,18 @@ const handleResister = (e) => {
     const email = form.email.value;
     const photo = form.photo.value;
     const password = form.password.value;
-    console.log({name,email,photo,password})
+    console.log({name,email,photo,password});
+    createUser(email, password).then(result=>{
+      const user = result.user;
+      setUser(user);
+      // console.log(user);
+    })
+    .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    alert(errorMessage);
+    // ..
+  });
 }
   return (
     <div>
