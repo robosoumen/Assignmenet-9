@@ -1,9 +1,13 @@
 import React, { use } from "react";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
+import { useNavigate } from "react-router";
 
 const LoginPage = () => {
   const {signIn} = use(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  console.log(location);
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -13,6 +17,7 @@ const LoginPage = () => {
     signIn(email, password).then((result) => {
       const user = result.user;
       console.log(user);
+      navigate(`${location.state ? location.state : '/'}`);
     }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
