@@ -12,7 +12,7 @@ const Homepage = () => {
         <Slider></Slider>
       </section>
       <section className=" flex justify-center">
-        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 space-y-5 space-x-5">
+        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 space-y-5 space-x-5 ">
             {
                 data.map(news => <PopularToys key={news.toyId} news={news}></PopularToys>)
             }

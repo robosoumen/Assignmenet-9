@@ -5,7 +5,8 @@ import { Outlet } from 'react-router';
 
 const MainLayout = () => {
     return (
-        <div className='w-11/12 mx-auto'>
+        <div className='bg-amber-100'>
+            <div className='w-11/12 mx-auto'>
             <header>
                <Navbar></Navbar>
             </header>
@@ -15,6 +16,7 @@ const MainLayout = () => {
             <footer>
                 <Footer></Footer>
             </footer>
+        </div>
         </div>
     );
 };

@@ -16,7 +16,7 @@ const PopularToys = ({ news }) => {
   } = news;
   return (
     <div>
-      <div className="card bg-base-100 w-96 shadow-sm">
+      <div className="card bg-amber-200 w-96 shadow-sm">
         <figure>
           <img
             className="w-full h-48 object-cover"
@@ -29,7 +29,7 @@ const PopularToys = ({ news }) => {
           <h1>Rating : {rating}</h1>
           <p>AvailableQuantity : {availableQuantity}</p>
           <p>Price : {price}</p>
-          <Link to={`/toy-details/${toyId}`} className="btn btn-primary">
+          <Link to={`/toy-details/${toyId}`} className="btn bg-[#A31F34] text-white">
             View More
           </Link>
         </div>

@@ -3,28 +3,28 @@ import React from "react";
 const Slider = () => {
   return (
     <div>
-      <div className="carousel w-full">
+      <div className="carousel w-full h-100">
         <div id="item1" className="carousel-item w-full">
           <img
-            src="https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4C-8wDmJJVMhy30AfWaDBuxCBXoZ9ZXtbYw&s"
             className="w-full"
           />
         </div>
         <div id="item2" className="carousel-item w-full">
           <img
-            src="https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp"
+            src="https://m.media-amazon.com/images/I/61iPFOQMs4L._AC_UF350,350_QL80_.jpg"
             className="w-full"
           />
         </div>
         <div id="item3" className="carousel-item w-full">
           <img
-            src="https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.webp"
+            src="https://m.media-amazon.com/images/I/71R8+EsM3lL._AC_UF1000,1000_QL80_.jpg"
             className="w-full"
           />
         </div>
         <div id="item4" className="carousel-item w-full">
           <img
-            src="https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.webp"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTA34d-FJT3ojdyXRQS66xCUr-DRGqDFygmOw&s"
             className="w-full"
           />
         </div>
