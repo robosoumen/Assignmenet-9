@@ -11,8 +11,8 @@ const Homepage = () => {
       <section className="slider mt-8">
         <Slider></Slider>
       </section>
-      <section className="space-y-2">
-        <div className="grid grid-cols-3">
+      <section className=" flex justify-center">
+        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 space-y-5 space-x-5">
             {
                 data.map(news => <PopularToys key={news.toyId} news={news}></PopularToys>)
             }

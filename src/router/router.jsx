@@ -8,6 +8,7 @@ import AuthLayout from "../layout/AuthLayout";
 import LoginPage from "../pages/LoginPage";
 import ToyDetails from "../pages/ToyDetails";
 import PrivateRoute from "../provider/PrivateRoute";
+import Loading from "../pages/Loading";
 
 const router = createBrowserRouter([
     {
@@ -17,7 +18,8 @@ const router = createBrowserRouter([
             {
                 path: '',
                 element: <Homepage></Homepage>,
-                loader: () => fetch('/public/toy.json')
+                loader: () => fetch('/public/toy.json'),
+                hydrateFallbackElement: <Loading></Loading>,
             },
             {
                 path: '/profile',
@@ -44,7 +46,8 @@ const router = createBrowserRouter([
         element:<PrivateRoute>
             <ToyDetails></ToyDetails>
         </PrivateRoute>,
-        loader: () => fetch('/toy.json')
+        loader: () => fetch('/toy.json'),
+        hydrateFallbackElement: <Loading></Loading>,
 
     },
     {

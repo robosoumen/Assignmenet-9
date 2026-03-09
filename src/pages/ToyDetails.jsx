@@ -17,7 +17,7 @@ const ToyDetails = () => {
         setNews(neswDetails);
     }, [data, id]);
     return (
-        <div>
+        <div className='space-y-3 bg-amber-200'>
            <header>
                 <Navbar></Navbar>
            </header>

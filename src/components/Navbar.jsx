@@ -15,24 +15,25 @@ const Navbar = () => {
         console.log(error);
       });
   };
+  // flex justify-between items-center  mx-auto py-3 text-white px-6
   return (
-    <div className="flex justify-between items-center  mx-auto py-3 bg-green-600 text-white px-6">
+    <div className={`bg-[#A31F34] flex justify-between items-center  mx-auto py-3 text-white px-6 tracking-wide font-normal`}>
       <div>
         <p>ToyGALAXY</p>
       </div>
-      <div className="flex gap-4">
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="profile">My Profile</NavLink>
+      <div className="flex gap-8">
+        <NavLink to="/" className={'hover:text-yellow-300'}>Home</NavLink>
+        <NavLink className={'hover:text-yellow-300'} to="profile">My Profile</NavLink>
       </div>
       <div className="flex gap-2 items-center">
         <div>{user && user.email}</div>
-        <img className="w-9 rounded-full" src={userImg} alt="" />
+        <img className="w-9 rounded-full" src={`${user ? user.photoURL : userImg}`} alt="" />
         {user ? (
-          <button onClick={handleLogOut} className="btn btn-primary">
+          <button onClick={handleLogOut} className="btn bg-blue-900 hover:bg-blue-950 text-white border-0">
             Log Out
           </button>
         ) : (
-          <Link className="btn btn-primary" to="/auth/login">
+          <Link className="btn bg-blue-900 hover:bg-blue-950 text-white border-0" to="/auth/login">
             Login
           </Link>
         )}

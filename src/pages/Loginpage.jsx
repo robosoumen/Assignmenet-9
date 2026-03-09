@@ -1,9 +1,10 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import { Link, useLocation } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
 import { useNavigate } from "react-router";
 
 const LoginPage = () => {
+  const [error, setError] = useState('');
   const {signIn} = use(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
@@ -20,8 +21,9 @@ const LoginPage = () => {
       navigate(`${location.state ? location.state : '/'}`);
     }).catch((error) => {
       const errorCode = error.code;
-      const errorMessage = error.message;
-      alert(errorCode, errorMessage);
+      // const errorMessage = error.message;
+      // alert(errorCode, errorMessage);
+      setError(errorCode);
     });
   };
   return (
@@ -39,6 +41,9 @@ const LoginPage = () => {
             <div>
               <a className="link link-hover">Forgot password?</a>
             </div>
+            {
+              error && <p className='text-red-600 text-xs'>{error}</p>
+            }
             <button type="submit" className="btn btn-neutral mt-4">Login</button>
             <p>
               Don't have Account?{" "}
