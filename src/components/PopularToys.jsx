@@ -21,7 +21,7 @@ const PopularToys = ({ news }) => {
           <img
             className="w-full h-48 object-cover"
             src={pictureURL}
-            alt="Shoes"
+            alt="Toys"
           />
         </figure>
         <div className="card-body">
@@ -29,7 +29,7 @@ const PopularToys = ({ news }) => {
           <h1>Rating : {rating}</h1>
           <p>AvailableQuantity : {availableQuantity}</p>
           <p>Price : {price}</p>
-          <Link to={`/toy-details/${toyId}`} className="btn bg-[#A31F34] text-white">
+          <Link to={`/toy-details/${toyId}`} className="btn border-0 bg-[#A31F34] text-white not-[]:">
             View More
           </Link>
         </div>
