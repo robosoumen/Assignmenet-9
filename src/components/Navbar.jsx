@@ -17,7 +17,7 @@ const Navbar = () => {
   };
   return (
     <div
-      className={`bg-[#A31F34] flex justify-between items-center  mx-auto py-3 text-white px-6 tracking-wide font-normal`}
+      className= {`bg-[#A31F34] flex justify-between items-center  mx-auto py-3 text-white px-6 tracking-wide font-normal`}
     >
       <div>
         <NavLink className={"hover:text-yellow-300"} to="/">

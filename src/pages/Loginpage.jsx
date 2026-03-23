@@ -2,8 +2,22 @@ import React, { use, useState } from "react";
 import { Link, useLocation } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
 import { useNavigate } from "react-router";
+// import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+// import { auth } from "../firebase/firebase.config";
+
+// const googleProvider = new GoogleAuthProvider();
 
 const LoginPage = () => {
+
+  // const handleSignInWithGoogle = () => {
+  //   // console.log('sign in with google is successful')
+  //   signInWithPopup(auth,googleProvider).then((result) => {
+  //     console.log(result.user)
+  //   }).catch((error) => {
+  //     console.log(error)
+  //   })
+  // }
+
   const [error, setError] = useState('');
   const {signIn} = use(AuthContext);
   const location = useLocation();
@@ -45,10 +59,11 @@ const LoginPage = () => {
               error && <p className='text-red-600 text-xs'>{error}</p>
             }
             <button type="submit" className="btn btn-neutral mt-4">Login</button>
+            {/* <button onClick={handleSignInWithGoogle} className="btn btn-primary mt-4">Sign In With Google</button> */}
             <p>
               Don't have Account?{" "}
               <Link className="text-secondary" to="/auth/resister">
-                Please Please Resister
+                Please Resister 
               </Link>
             </p>
           </fieldset>
