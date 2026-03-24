@@ -1,43 +1,8 @@
-// import React from "react";
-// import Slider from "../components/Slider";
-// import PopularToys from "../components/PopularToys";
-// import { useLoaderData } from "react-router";
-// import FormSection from "../components/FormSection";
-// import ExtraSection from "../components/ExtraSection";
-
-// const Homepage = () => {
-//     const data = useLoaderData();
-//     // console.log(data)
-//   return (
-//     <div className="space-y-2">
-//       <section className="slider mt-8">
-//         <Slider></Slider>
-//       </section>
-//       <div>
-//         <ExtraSection></ExtraSection>
-//       </div>
-//       <h1 className="text-center text-3xl font-bold p-4">Popular Toys</h1>
-//       <section className=" flex justify-center">
-//         <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 space-y-5 space-x-5 ">
-//             {
-//                 data.map(news => <PopularToys key={news.toyId} news={news}></PopularToys>)
-//             }
-//         </div>
-//       </section>
-//       <div>
-//         <FormSection></FormSection>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Homepage;
-
 import React, { useState } from "react";
 import Slider from "../components/Slider";
 import PopularToys from "../components/PopularToys";
 import { useLoaderData } from "react-router";
-import FormSection from "../components/FormSection";
+// import FormSection from "../components/FormSection";
 import ExtraSection from "../components/ExtraSection";
 
 const Homepage = () => {
@@ -79,9 +44,9 @@ const Homepage = () => {
           )}
         </div>
       )}
-      <div>
+      {/* <div>
         <FormSection />
-      </div>
+      </div> */}
     </div>
   );
 };

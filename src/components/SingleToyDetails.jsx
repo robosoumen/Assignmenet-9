@@ -1,9 +1,10 @@
 import React from "react";
+import FormSection from "../components/FormSection";
 
 const SingleToyDetails = ({ news }) => {
   console.log(news);
   return (
-    <div className="flex justify-center ">
+    <div className="flex justify-center flex-col">
       <div className="card  w-full shadow-sm ">
         <div className="card-body">
           <h2 className="card-title text-4xl flex justify-center bg-amber-200 rounded-3xl p-3">
@@ -29,6 +30,9 @@ const SingleToyDetails = ({ news }) => {
           </div>
          </div>
         </div>
+      </div>
+      <div>
+        <FormSection></FormSection>
       </div>
     </div>
   );

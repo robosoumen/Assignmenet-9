@@ -6,7 +6,6 @@ import { AuthContext } from "../provider/AuthProvider";
 const Navbar = () => {
   const { user, logOut } = use(AuthContext);
   const handleLogOut = () => {
-    // console.log("user Trying to logOut");
     logOut()
       .then(() => {
         alert("you logged out successfully");
@@ -34,7 +33,6 @@ const Navbar = () => {
       </div>
       {/* project requirement */}
       <div className="flex gap-2 items-center">
-        {/* <div>{user && user.email}</div> */}
         <div className="relative group flex items-center">
           <img
             className="w-10 h-10 rounded-full border-2 border-white cursor-pointer object-cover"

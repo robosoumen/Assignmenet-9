@@ -10,7 +10,6 @@ const ToyDetails = () => {
     const data = useLoaderData();
     const {id} = useParams();
     const [news, setNews] = useState({});
-    // console.log(data, id);
 
     useEffect(() => {
         const neswDetails = data.find((singleNews) => singleNews.toyId == id);

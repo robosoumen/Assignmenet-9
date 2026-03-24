@@ -2,42 +2,36 @@ import React, { use, useState } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
 import { useNavigate } from "react-router";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from "../firebase/firebase.config";
+import { useLocation } from "react-router";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { toast } from "react-toastify";
 
-// const googleProvider = new GoogleAuthProvider();
+
 const ResisterPage = () => {
-
-  // const [userData, setUserData] = useState(null);
-  // const handleGoogleLogIn = () => {
-  //   signInWithPopup(auth, googleProvider)
-  //     .then((result) => {
-  //       console.log(result.user);
-  //       setUser(result.user)
-  //       navigate('/')
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
-  const { createUser, setUser, updateUser, googleSignIn} = use(AuthContext);
+  const { createUser, setUser, updateUser, googleSignIn } = use(AuthContext);
   const [nameError, setNameError] = useState("");
+  const [passwordReg, setPasswordReg] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
+  const location = useLocation();
   const navigate = useNavigate();
 
   const handleGoogleLogIn = () => {
-    googleSignIn().then((result) => {
-      console.log(result.user);
-      setUser(result.user);
-       navigate("/");
-    }).catch(error => {
-      console.log(error)
-    })
-  }
+    googleSignIn()
+      .then((result) => {
+        console.log(result.user);
+        setUser(result.user);
+        toast('google sign in successful')
+        navigate(location.state || "/");
+      })
+      .catch((error) => {
+        console.log(error);
+        toast(error)
+      });
+  };
 
   const handleResister = (e) => {
     e.preventDefault();
-    // console.log(e.target);
     const form = e.target;
     const name = form.name.value;
     if (name.length < 5) {
@@ -49,13 +43,23 @@ const ResisterPage = () => {
     const email = form.email.value;
     const photo = form.photo.value;
     const password = form.password.value;
-    // console.log({ name, email, photo, password });
+
+    // regEx
+    const passwordValidation = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
+
+    if(!passwordValidation.test(password)){
+      setPasswordReg('Password must have at least 6 characters and Must have 1 uppercase and lowercase');
+      toast('Password must have at least 6 characters and Must have 1 uppercase and lowercase')
+      return;
+    }
+
     createUser(email, password)
       .then((result) => {
         const user = result.user;
         updateUser({ displayName: name, photoURL: photo })
           .then(() => {
             setUser({ ...user, displayName: name, photoURL: photo });
+            toast('resister successful')
             navigate("/");
           })
           .catch((error) => {
@@ -64,12 +68,16 @@ const ResisterPage = () => {
           });
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
         alert(errorMessage);
-        // ..
       });
   };
+
+  const handleShowPassword = (e) => {
+    e.preventDefault();
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div>
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -106,28 +114,66 @@ const ResisterPage = () => {
               type="text"
               className="input"
               placeholder="PhotoURL"
-              required
             />
             {/* password */}
-            <label className="label">Password</label>
-            <input
-              name="password"
-              type="password"
-              className="input"
-              placeholder="Password"
-              required
-            />
+            <div className="relative">
+              <label className="label">Password</label>
+              <input
+                name="password"
+                type={showPassword ? "text" : "password"}
+                className="input"
+                placeholder="Password"
+                required
+              />
+              {
+                passwordReg && <p className="text-xs italic text-red-600">{passwordReg}</p>
+              }
+              <button
+                onClick={handleShowPassword}
+                className=" absolute top-8 right-4"
+              >
+                {showPassword ? <FaEye /> : <FaEyeSlash />}
+              </button>
+            </div>
             <div>
               <a className="link link-hover">Forgot password?</a>
             </div>
             <button type="submit" className="btn btn-neutral mt-4">
               Resister
             </button>
+            {/* Google */}
             <button
               onClick={handleGoogleLogIn}
-              className="btn btn-primary mt-4"
+              className="btn bg-blue-500 text-white border-[#e5e5e5]"
             >
-              Google LogIn
+              <svg
+                aria-label="Google logo"
+                width="16"
+                height="16"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+              >
+                <g>
+                  <path d="m0 0H512V512H0" fill="#ffffff"></path>
+                  <path
+                    fill="#34a853"
+                    d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"
+                  ></path>
+                  <path
+                    fill="#4285f4"
+                    d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"
+                  ></path>
+                  <path
+                    fill="#fbbc02"
+                    d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"
+                  ></path>
+                  <path
+                    fill="#ea4335"
+                    d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"
+                  ></path>
+                </g>
+              </svg>
+              Login with Google
             </button>
             <p>
               Already Have a Account?
