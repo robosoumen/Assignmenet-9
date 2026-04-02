@@ -66,3 +66,28 @@ const AuthProvider = ({ children }) => {
 };
 
 export default AuthProvider;
+
+
+// // ----------------------------------------------------------
+
+
+// import { createUserWithEmailAndPassword } from 'firebase/auth';
+// import React from 'react';
+// import { auth } from '../firebase/firebase.config';
+
+// const AuthProvider = ({children}) => {
+//     const createUser = (email, password) => {
+//         return createUserWithEmailAndPassword(auth, email, password)
+//     }
+
+//     const authInfo = {
+//         createUser,
+//     }
+//     return (
+//         <AuthContext value={authInfo}>
+//             {children}
+//         </AuthContext>
+//     );
+// };
+
+// export default AuthProvider;

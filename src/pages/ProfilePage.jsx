@@ -4,6 +4,7 @@ import { updateProfile } from "firebase/auth";
 
 const ProfilePage = () => {
   const { user, setUser } = use(AuthContext);
+  console.log(user)
 
   const handleUpdateProfile = (e) => {
     e.preventDefault();
@@ -25,6 +26,7 @@ const ProfilePage = () => {
 
   return (
     <div className="flex flex-col items-center p-6 gap-6 ">
+        <h1 className="text-3xl font-bold text-red-900 bg-yellow-300 rounded-full p-3 m-3">YOUR PROFILE</h1>
       {/* user information */}
       <div className="flex flex-col items-center p-7 gap-4">
         <div>
@@ -60,7 +62,7 @@ const ProfilePage = () => {
               placeholder="Update Your Photo"
             />
           </div>
-          <div>
+          <div className="flex justify-center p-6">
             <button type="submit" className="btn btn-secondary">
               Update Profile
             </button>

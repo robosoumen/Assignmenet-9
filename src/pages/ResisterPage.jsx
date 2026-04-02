@@ -1,5 +1,5 @@
 import React, { use, useState } from "react";
-import { Link, } from "react-router";
+import { Link } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
 import { useNavigate } from "react-router";
 import { useLocation } from "react-router";
@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 const ResisterPage = () => {
   const { createUser, setUser, updateUser, googleSignIn } = use(AuthContext);
   const [nameError, setNameError] = useState("");
-  const [passwordReg, setPasswordReg] = useState("");
+  const [passwordReg, setPasswordReg] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
   const location = useLocation();
@@ -20,12 +20,10 @@ const ResisterPage = () => {
       .then((result) => {
         console.log(result.user);
         setUser(result.user);
-        toast("google sign in successful");
         navigate(location.state || "/");
       })
       .catch((error) => {
         console.log(error);
-        toast(error);
       });
   };
 
@@ -46,21 +44,27 @@ const ResisterPage = () => {
     // regEx
     const passwordValidation = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
 
-    if (!passwordValidation.test(password)) {
-      setPasswordReg(
-        "Password must have at least 6 characters and Must have 1 uppercase and lowercase",
-      );
-      toast(
-        "Password must have at least 6 characters and Must have 1 uppercase and lowercase",
-      );
+    if(!passwordValidation.test(password)){
+      setPasswordReg('Password must ha at least 6 characters\n- Must have 1 uppercase letter\n- Must have 1 lowercase letter');
       return;
     }
 
     createUser(email, password)
       .then((result) => {
-        console.log(result.user);
-        toast('resister successful');
-        navigate('/');
+        const user = result.user;
+        setUser(user);
+         navigate("/");
+         toast('register is successful')
+        // updateUser({ displayName: name, photoURL: photo })
+        //   .then(() => {
+        //     setUser({ ...user, displayName: name, photoURL: photo });
+        //     navigate("/");
+        //   })
+        //   .catch((error) => {
+        //     console.log(error);
+        //     setUser(user);
+        //   });
+
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -120,9 +124,9 @@ const ResisterPage = () => {
                 placeholder="Password"
                 required
               />
-              {passwordReg && (
-                <p className="text-xs italic text-red-600">{passwordReg}</p>
-              )}
+              {
+                passwordReg && <p className="text-xs italic text-red-600">{passwordReg}</p>
+              }
               <button
                 onClick={handleShowPassword}
                 className=" absolute top-8 right-4"
@@ -184,3 +188,20 @@ const ResisterPage = () => {
 };
 
 export default ResisterPage;
+
+// --------------------------------------------------------------------------
+
+// import React, { use } from 'react';
+// import {AuthContext} from '../provider/AuthContext'
+
+// const ResisterPage = () => {
+//     const {authInfo} = use(AuthContext);
+//     console.log('resister page ', authInfo)
+//     return (
+//         <div>
+//             <h1>This is resister page</h1>
+//         </div>
+//     );
+// };
+
+// export default ResisterPage;

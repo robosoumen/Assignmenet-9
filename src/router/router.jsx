@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router";
-import ToyDetailspage from "../pages/ToyDetailspage";
 import MainLayout from "../layout/MainLayout";
 import Homepage from "../pages/Homepage";
 import ProfilePage from "../pages/ProfilePage";

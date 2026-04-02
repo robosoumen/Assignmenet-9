@@ -62,12 +62,13 @@ const LoginPage = () => {
 
   const handleForgetPassword = () => {
     const email = emailRef.current.value;
-    sendPasswordResetEmail(auth,email)
-    .then(() => {
-      toast('Please Check Your Email')
-    }).catch(error => {
-      toast(error)
-    })
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        toast("Please Check Your Email");
+      })
+      .catch((error) => {
+        toast(error);
+      });
   };
   return (
     <div>
