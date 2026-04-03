@@ -1,16 +1,11 @@
-# React + Vite
+1 > Project Name => Toy Galaxy
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+2 > Purpose of this Project => The purpose of this Project is to develop of my skill of react, firebase authentication, react router, and improve my skill of loading and fetching the json data, and use the data in dynamic route, and improve my skill of useState and useEffect,and use the conditional rendering,and use the responsive website.
 
-Currently, two official plugins are available:
+3 > Live URL => 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+4 > key features => 1. the key feature of this project is first a user can register first here with email and password or using their google account.
+2. if user is not register here then they can not go any private page like profile page or view more of toy card.
+3. if user is logged in then they can see their photo in navbar or if they hover over the photo then they see his name there.
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+5 > npm packages => i used in this project react icon and react-toastify npm package

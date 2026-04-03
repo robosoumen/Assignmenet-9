@@ -22,7 +22,7 @@ const SingleToyDetails = ({ news }) => {
           </div>
          <div className="bg-red-600 rounded-2xl p-3">
            <div className="flex justify-around">
-            <p className="text-white my-2"><span className="text-base text-red-500 bg-white p-1 rounded-xl">Description :</span> {news.description}</p>
+            <p className="text-white my-2"><span className="text-base font-bold text-red-500 bg-white p-1 rounded-xl">Description :</span> {news.description}</p>
           </div>
           <div className="flex justify-around gap-2">
             <h1 className="bg-yellow-200 p-3 rounded-2xl">category : {news.subCategory}</h1>
